@@ -18,8 +18,6 @@
 	String password = "tiger";
 	
 	String selectQuery = "SELECT * FROM EMP";
-	
-	
 %>
 <!DOCTYPE html>
 <html>
