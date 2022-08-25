@@ -17,7 +17,7 @@
 	String user = "scott";
 	String password = "tiger";
 	
-	String selectQuery = "SELECT * FROM EMP";
+	String selectQuery = "SELECT * FROM EMP9";
 %>
 <!DOCTYPE html>
 <html>

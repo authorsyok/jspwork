@@ -6,7 +6,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <meta charset="UTF-8">
 <!-- 이걸해야 한글이 안깨짐-->
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <%request.setCharacterEncoding("UTF-8");%>
 <%!
 	Connection conn = null;
@@ -40,7 +39,7 @@
 		stmt = conn.createStatement();
 		
 		StringBuffer insertQuery = new StringBuffer();
-		insertQuery.append("INSERT INTO EMP VALUES('");
+		insertQuery.append("INSERT INTO EMP9 VALUES('");
 		insertQuery.append(w_number + "','");
 		insertQuery.append(w_name + "','");
 		insertQuery.append(position + "','");
@@ -58,7 +57,7 @@
 			추가 성공
 			<br>
 			<a href="addForm.html">추가작업</a>
-			<a href="PP.jsp">검색작업</a>
+			<a href="viewMember.jsp">검색작업</a>
 <%
 		}else {
 %>

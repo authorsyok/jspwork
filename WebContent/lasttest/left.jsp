@@ -7,6 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<a href="?pageChange=java.jsp">JAVA</a>
+	<a href="?pageChange=jsp.jsp">JSP</a>
+	<a href="?pageChange=oracle.jsp">ORACLE</a>
+	<a href="?pageChange=html.jsp">HTML</a>
+	<a href="?pageChange=css.jsp">CSS</a>
 </body>
 </html>
