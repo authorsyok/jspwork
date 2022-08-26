@@ -27,7 +27,7 @@
 			Context ctx = new InitialContext();
 			ds = (DataSource)ctx.lookup("java:comp/env/jdbc/oracle");
 			conn = ds.getConnection();
-			System.out.println("DBCP 연동 성공");	
+			System.out.println("DBCP 연동 성공");
 			StringBuffer selectQuery = new StringBuffer();
 			selectQuery.append("SELECT name, class, tel FROM MEMBER2 WHERE ID = ?");
 			String id = request.getParameter("id");

@@ -17,7 +17,9 @@
 	String user = "scott";
 	String password = "tiger";
 	
-	String selectQuery = "SELECT * FROM EMP9";
+	String selectQuery = "SELECT * FROM MEMBER2";
+	
+	
 %>
 <!DOCTYPE html>
 <html>
@@ -26,16 +28,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<table width="1000" border="1">
+	<table width="400" border="1">
 		<tr>
-			<td>사원번호</td>
-			<td>사원명</td>
-			<td>직급</td>
-			<td>상관번호</td>
-			<td>입사일자</td>
-			<td>급여</td>
-			<td>COMM</td>
-			<td>DEPTNO</td>
+			<td>아이디</td>
+			<td>이름</td>
+			<td>등급</td>
+			<td>전화번호</td>
 		</tr>
 		<%
 			try{
@@ -47,14 +45,24 @@
 				while(rs.next()) {
 		%>
 		<tr>
-			<td><%= rs.getString("w_number") %></td>
-			<td><%= rs.getString("w_name") %></td>
-			<td><%= rs.getString("position") %></td>
-			<td><%= rs.getString("b_number") %></td>
-			<td><%= rs.getString("date") %></td>
-			<td><%= rs.getString("pay") %></td>
-			<td><%= rs.getString("comm") %></td>
-			<td><%= rs.getString("deptno") %></td>
+				<td>
+					<a href="updateMemberOld.jsp?id=<%= rs.getString("id") %>">
+						<%= rs.getString("id") %>
+					</a>
+				</td>
+			<td><%= rs.getString("name") %></td>
+ 				<td>
+ 					<%
+ 						int n_class = rs.getInt("class");
+ 						if(n_class == 1) {
+ 							out.print("일반회원");
+ 						}
+ 						else {
+ 							out.print("교수님");
+ 						}
+ 					%>
+ 				</td>
+			<td><%= rs.getString("tel") %></td>
 		</tr>
 		<%
 				}

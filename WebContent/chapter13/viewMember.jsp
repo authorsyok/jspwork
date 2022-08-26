@@ -47,8 +47,8 @@
 		<tr>
 			<td><%= rs.getString("id") %></td>
 			<td><%= rs.getString("name") %></td>
-<%-- 			<td><%= rs.getInt("class") %></td>
- --%>			<td>
+			<td><%= rs.getInt("class") %></td>			
+<%-- 				<td>
  					<%
  						int n_class = rs.getInt("class");
  						if(n_class == 1) {
@@ -58,7 +58,7 @@
  							out.print("교수님");
  						}
  					%>
- 				</td>
+ 				</td> --%>
 			<td><%= rs.getString("tel") %></td>
 		</tr>
 		<%

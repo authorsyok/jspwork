@@ -45,15 +45,13 @@
 				while(rs.next()) {
 		%>
 		<tr>
-<%-- 			<td><%= rs.getString("id") %></td>
---%>			<td>
+			<td>
 					<a href="updateMember.jsp?id=<%= rs.getString("id") %>">
 						<%= rs.getString("id") %>
 					</a>
 				</td>
 			<td><%= rs.getString("name") %></td>
-<%-- 			<td><%= rs.getInt("class") %></td>
- --%>			<td>
+			<td>
  					<%
  						int n_class = rs.getInt("class");
  						if(n_class == 1) {
