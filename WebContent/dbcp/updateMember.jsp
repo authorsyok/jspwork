@@ -7,8 +7,9 @@
 <%@page import="java.sql.SQLException"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.Connection"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<% request.setCharacterEncoding("utf-8"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,35 +28,35 @@
 			Context ctx = new InitialContext();
 			ds = (DataSource)ctx.lookup("java:comp/env/jdbc/oracle");
 			conn = ds.getConnection();
-			System.out.println("DBCP ¿¬µ¿ ¼º°ø");	
-			StringBuffer selectQuery = new StringBuffer();
-			selectQuery.append("SELECT name, class, tel FROM MEMBER2 WHERE ID = ?");
+			System.out.println("DBCP ì—°ë™ ì„±ê³µ");	
+			StringBuffer sb = new StringBuffer();
+			sb.append("SELECT name, class, tel FROM MEMBER2 WHERE ID = ?");
 			String id = request.getParameter("id");
-			pstmt = conn.prepareStatement(selectQuery.toString());
+			pstmt = conn.prepareStatement(sb.toString());
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()){
 	%>
 				<form method="post" action="updateProcess.jsp">
-					¾ÆÀÌµð : <input type="text" name="id" readonly value="<%= id%>"><br>
-					ÀÌ¸§ : <input type="text" name="name" value="<%= rs.getString("name")%>"><br>
-					È¸¿øµî±Þ : <input type="text" name="mclass" value="<%= rs.getString("class")%>"><br>
-					ÀüÈ­¹øÈ£ : <input type="text" name="tel" value="<%= rs.getString("tel")%>"><br>
-					<input type="submit" value="¼öÁ¤">
-					<a href="viewMemberOld.jsp">¸ñ·Ïº¸±â</a>
+					ì•„ì´ë”” : <input type="text" name="id" readonly value="<%= id%>"><br>
+					ì´ë¦„ : <input type="text" name="name" value="<%= rs.getString("name")%>"><br>
+					íšŒì›ë“±ê¸‰ : <input type="text" name="mclass" value="<%= rs.getString("class")%>"><br>
+					ì „í™”ë²ˆí˜¸ : <input type="text" name="tel" value="<%= rs.getString("tel")%>"><br>
+					<input type="submit" value="ìˆ˜ì •">
+					<a href="viewMemberOld.jsp">ëª©ë¡ë³´ê¸°</a>
 				</form>				
 	<%	
 			}else {
 	%>
-				<font color="red">¾ÆÀÌµð¾ø´Ù.</font>
-				<a href="viewMemberOld.jsp">¸ñ·Ïº¸±â</a>
+				<font color="red">ì•„ì´ë””ì—†ë‹¤.</font>
+				<a href="viewMemberOld.jsp">ëª©ë¡ë³´ê¸°</a>
 	<%
 			}
 		}catch(NamingException ne){
 			ne.printStackTrace();
 		}catch(SQLException ex) {
-			out.print("µ¥ÀÌÅÍº£ÀÌ½º ¿¬°áÀÌ ½ÇÆÐÇß½À´Ï´Ù.<br>");
+			out.print("ë°ì´í„°ë² ì´ìŠ¤ ì—°ê²°ì´ ì‹¤íŒ¨í–ˆìŠµë‹ˆë‹¤.<br>");
 			out.print("SQLException : " + ex.getMessage());
 		}finally{
 			try{

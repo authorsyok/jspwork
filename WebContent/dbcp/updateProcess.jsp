@@ -7,8 +7,11 @@
 <%@page import="java.sql.SQLException"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.Connection"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<%
+	request.setCharacterEncoding("UTF-8");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,11 +38,11 @@
 		vclass = request.getParameter("mclass");
 		tel = request.getParameter("tel");
 	
-		StringBuffer updateQuery = new StringBuffer();
-		updateQuery.append("update member2 set name=? ,class=?,tel=?where id=?");
+		StringBuffer sb = new StringBuffer();
+		sb.append("update member2 set name=? ,class=?,tel=?where id=?");
 		
 		try{
-			pstmt = conn.prepareStatement(updateQuery.toString());
+			pstmt = conn.prepareStatement(sb.toString());
 			pstmt.setString(1, name);
 			pstmt.setInt(2, Integer.parseInt(vclass));
 			pstmt.setString(3, tel);
@@ -48,16 +51,16 @@
 			
 			if(re == 1) {
 	%>
-				<%= id %>ÀÇ Á¤º¸°¡ ¼öÁ¤µÇ¾úÀ½.<br>
-				[<a href="viewMember.jsp">¸ñ·Ïº¸±â</a>]
+				<%= id %>ì˜ ì •ë³´ê°€ ìˆ˜ì •ë˜ì—ˆìŒ.<br>
+				[<a href="viewMember.jsp">ëª©ë¡ë³´ê¸°</a>]
 	<%
 			}else{
 	%>
-				º¯°æ ½ÇÆÐ
+				ë³€ê²½ ì‹¤íŒ¨
 	<%
 			}
 		}catch(SQLException ex) {
-			out.print("µ¥ÀÌÅÍº£ÀÌ½º ¿¬°áÀÌ ½ÇÆÐÇß½À´Ï´Ù.<br>");
+			out.print("ë°ì´í„°ë² ì´ìŠ¤ ì—°ê²°ì´ ì‹¤íŒ¨í–ˆìŠµë‹ˆë‹¤.<br>");
 			out.print("SQLException : " + ex.getMessage());
 		}finally{
 			try{
