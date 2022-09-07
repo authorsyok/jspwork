@@ -46,22 +46,22 @@
 		%>
 		<tr>
 			<td>
-					<a href="updateMember.jsp?id=<%= rs.getString("id") %>">
-						<%= rs.getString("id") %>
-					</a>
-				</td>
+				<a href="updateMember.jsp?id=<%= rs.getString("id") %>">
+					<%= rs.getString("id") %>
+				</a>
+			</td>
 			<td><%= rs.getString("name") %></td>
 			<td>
- 					<%
- 						int n_class = rs.getInt("class");
- 						if(n_class == 1) {
- 							out.print("일반회원");
- 						}
- 						else {
- 							out.print("교수님");
- 						}
- 					%>
- 				</td>
+ 				<%
+ 					int n_class = rs.getInt("class");
+ 					if(n_class == 1) {
+ 						out.print("일반회원");
+ 					}
+ 					else {
+ 						out.print("교수님");
+ 					}
+ 				%>
+ 			</td>
 			<td><%= rs.getString("tel") %></td>
 		</tr>
 		<%
